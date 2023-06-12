@@ -8,6 +8,10 @@
 import Foundation
 
 protocol AdvancedInfoProtocol {
-    
+    var photoURL: URL? { get }
+    var author: String { get }
+    var date: String { get }
+    var location: String { get }
+    var countDownload: String { get }
 }
 

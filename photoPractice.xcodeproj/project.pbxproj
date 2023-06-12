@@ -260,8 +260,8 @@
 		CEA638082A37648000FABE02 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CEA638032A37645400FABE02 /* AdvancedInfoProtocol.swift */,
 				CEA638052A37646600FABE02 /* AdvancedInfoViewModel.swift */,
+				CEA638032A37645400FABE02 /* AdvancedInfoProtocol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

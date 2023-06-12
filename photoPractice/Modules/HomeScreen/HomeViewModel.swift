@@ -35,7 +35,7 @@ extension HomeViewModel: HomeViewModelProtocol {
     func viewModelForSelectedRow() -> AdvancedInfoProtocol? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         let photo = photos[selectedIndexPath.row]
-        return AdvancedInfoViewModel()
+        return AdvancedInfoViewModel(photo: photo)
     }
     func getPhotos() {
         ApiManager.shared.getRandomPhoto { [weak self] photos in

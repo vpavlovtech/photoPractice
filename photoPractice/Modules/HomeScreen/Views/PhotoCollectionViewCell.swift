@@ -13,6 +13,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     private let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -20,7 +22,6 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
-        contentView.backgroundColor = .red
     }
 
     @available (*, unavailable)
@@ -34,8 +35,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         mainImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mainImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            mainImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2.5),
+            mainImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -2.5),
             mainImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }

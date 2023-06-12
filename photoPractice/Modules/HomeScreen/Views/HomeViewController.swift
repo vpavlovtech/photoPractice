@@ -57,9 +57,9 @@ final class HomeViewController: UIViewController {
     }
     private func setupflowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = .init(width: view.frame.width / 2 - 10, height: 300)
+//        layout.minimumLineSpacing = 5
+//        layout.minimumInteritemSpacing = 5
+        layout.itemSize = .init(width: view.bounds.width / 2 - 5, height: 200)
         return layout
     }
     // - MARK: Bind viewModel
@@ -87,11 +87,18 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         return cell
     }
-    
-    
+
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        homeViewModel.selectedRow(at: indexPath)
+        guard let viewModel = homeViewModel.viewModelForSelectedRow() else { return }
+        let viewController = AdvancedInfoViewController(advancedViewModel: viewModel)
+        viewController.modalPresentationStyle = .automatic
+        self.present(viewController, animated: true)
+    }
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         searchController.searchBar.resignFirstResponder()
     }
