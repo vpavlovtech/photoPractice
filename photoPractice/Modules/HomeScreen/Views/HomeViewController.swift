@@ -10,6 +10,8 @@ private enum LocalConstants {
     static let searchPlaceHolder = "Введите запрос"
 }
 final class HomeViewController: UIViewController {
+    private let homeViewModel: HomeViewModelProtocol = HomeViewModel()
+    
     private var photoCollectionView: UICollectionView!
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
@@ -22,20 +24,21 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUserInterface()
+        bindViewModel()
     }
     
-    // MARK: Private setupUI
+    // - MARK: Private setupUI
     private func setupUserInterface() {
         view.backgroundColor = .mainColor
         setupNavigationBar()
         setupCollectionView()
     }
-    // MARK: Private setup NavigationBar
+    // - MARK: Private setup NavigationBar
     private func setupNavigationBar() {
         navigationItem.title = "Random photos"
         navigationItem.searchController = searchController
     }
-    // MARK: Private setup collectionView
+    // - MARK: Private setup collectionView
     private func setupCollectionView() {
         photoCollectionView = .init(frame: .zero, collectionViewLayout: setupflowLayout())
         view.addSubview(photoCollectionView)
@@ -59,16 +62,29 @@ final class HomeViewController: UIViewController {
         layout.itemSize = .init(width: view.frame.width / 2 - 10, height: 300)
         return layout
     }
+    // - MARK: Bind viewModel
+    
+    private func bindViewModel() {
+        homeViewModel.getPhotos()
+        homeViewModel.numberOfCell.bind { value in
+            self.photoCollectionView.reloadData()
+        }
+    }
 }
     // - MARK: Extensions
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return homeViewModel.numberOfCell.value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.cellIdentifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureCell()
+        let cellViewModel = homeViewModel.cellViewModel(for: indexPath)
+        switch cellViewModel {
+        case let castViewModel as PhotoCellViewModel:
+            cell.configureCell(viewModel: castViewModel)
+        default: return cell
+        }
         return cell
     }
     
@@ -83,9 +99,9 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        homeViewModel.searchPhotos(search: searchBar.text)
     }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        homeViewModel.lookCachPhotos()
     }
 }

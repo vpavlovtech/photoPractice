@@ -12,5 +12,7 @@ protocol HomeViewModelProtocol {
     func cellViewModel(for indexPath: IndexPath) -> PhotoCellViewModelProtocol?
     func selectedRow(at indexPath: IndexPath)
     func viewModelForSelectedRow() -> AdvancedInfoProtocol?
-    func getPhotos() 
+    func getPhotos()
+    func searchPhotos(search: String?)
+    func lookCachPhotos()
 }

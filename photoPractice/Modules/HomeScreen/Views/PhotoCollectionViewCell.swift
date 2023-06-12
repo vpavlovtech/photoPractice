@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class PhotoCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "PhotoCollectionViewCell"
     private let mainImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -39,7 +40,9 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         ])
     }
     // - MARK: Public method configureCell
-    func configureCell() {
-        mainImageView.image = UIImage(named: "DC")
+    func configureCell(viewModel: PhotoCellViewModel) {
+        mainImageView.kf.setImage(with: viewModel.photoURL,
+                                  options: [.cacheOriginalImage,
+                                            .transition(.fade(0.25))])
     }
 }

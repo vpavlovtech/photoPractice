@@ -15,6 +15,7 @@ final class HomeViewModel {
             count.value = photos.count
         }
     }
+    private var cachPhotos: AllPhotos = []
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
@@ -42,6 +43,18 @@ extension HomeViewModel: HomeViewModelProtocol {
                 self?.photos = photos
             }
         }
+    }
+    func searchPhotos(search: String?) {
+        cachPhotos = photos
+        guard let text = search else { return }
+        ApiManager.shared.getSearchPhoto(search: text) { photos in
+            DispatchQueue.main.async {
+                self.photos = photos
+            }
+        }
+    }
+    func lookCachPhotos() {
+        photos = cachPhotos
     }
 
 }
