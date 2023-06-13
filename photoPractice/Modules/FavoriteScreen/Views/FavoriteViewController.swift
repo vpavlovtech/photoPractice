@@ -8,7 +8,7 @@
 import UIKit
 
 final class FavoriteViewController: UIViewController {
-    private let favoriteViewModel: FavoriteScreenViewModelProtocol = FavoriteScreenViewModel()
+     let favoriteViewModel: FavoriteScreenViewModelProtocol = FavoriteScreenViewModel()
     private let favoriteTableView = UITableView(frame: .zero, style: .plain)
     
     // - MARK: Lifecycle
@@ -16,6 +16,10 @@ final class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         setupUserInterface()
         bindViewModel()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favoriteViewModel.refreshPhotos()
     }
     
     // - MARK: Private setupUI
@@ -41,8 +45,7 @@ final class FavoriteViewController: UIViewController {
     }
     // - MARK: Bind viewModel
     private func bindViewModel() {
-        favoriteViewModel.numberOfCell.bind { value in
-            print(value)
+        favoriteViewModel.numberOfCell.bind { _ in
             self.favoriteTableView.reloadData()
         }
     }
@@ -64,6 +67,12 @@ extension FavoriteViewController: UITableViewDataSource {
         default: return cell
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        favoriteViewModel.removePhoto(at: indexPath)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
     }
     
     

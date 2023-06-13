@@ -41,20 +41,29 @@ final class UserDefaultsWorker {
     func removePhoto(photo: PhotoModel?) -> AllPhotos {
         guard let photo = photo else { return [] }
         var photos: AllPhotos = []
-        
         if let savedData = userDefaults.object(forKey: UserDefaultsWorker.SAVED_PHOTO) as? Data {
-            do{
+            do {
                 let savedPhotos = try JSONDecoder().decode(AllPhotos.self, from: savedData)
                 savedPhotos.forEach {
                     if $0.id != photo.id {
                         photos.append($0)
                     }
+                    self.cangedPhotos(photos: photos)
                 }
             } catch {
                 print("Error remove photos")
             }
         }
         return photos
+    }
+    private func cangedPhotos(photos: AllPhotos?) {
+        guard let photos = photos else { return }
+        do {
+            let encodedData = try JSONEncoder().encode(photos)
+            userDefaults.set(encodedData, forKey: UserDefaultsWorker.SAVED_PHOTO)
+        } catch {
+            print("Error refresh photo")
+        }
     }
     
 }

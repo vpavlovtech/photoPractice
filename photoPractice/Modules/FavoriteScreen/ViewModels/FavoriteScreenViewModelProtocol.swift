@@ -12,4 +12,6 @@ protocol FavoriteScreenViewModelProtocol {
     func cellViewModel(for indexPath: IndexPath) -> FavoriteCellViewModelProtocol?
     func selectedRow(at indexPath: IndexPath)
     func viewModelForSelectedRow() -> AdvancedInfoProtocol?
+    func removePhoto(at: IndexPath)
+    func refreshPhotos()
 }

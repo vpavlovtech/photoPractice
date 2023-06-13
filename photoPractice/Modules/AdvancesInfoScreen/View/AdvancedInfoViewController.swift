@@ -139,11 +139,12 @@ final class AdvancedInfoViewController: UIViewController {
         let actionOK = UIAlertAction(title: "Yes",
                                      style: .default) { _ in
             self.advancedViewModel.removePhoto()
+            self.dismiss(animated: true) {
+
+            }
         }
         let actionCansel = UIAlertAction(title: "Cansel",
-                                         style: .cancel) { _ in
-            
-        }
+                                         style: .cancel)
         alert.addAction(actionOK)
         alert.addAction(actionCansel)
         self.present(alert, animated: true)
