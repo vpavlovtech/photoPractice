@@ -13,5 +13,7 @@ protocol AdvancedInfoProtocol {
     var date: String { get }
     var location: String { get }
     var countDownload: String { get }
+    func savePhoto()
+    func removePhoto()
 }
 

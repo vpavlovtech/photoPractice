@@ -12,4 +12,5 @@ enum ImagesNames {
     static let homeUnselected = "house"
     static let favoriteSelected = "heart.fill"
     static let favoriteUnselected = "heart"
+    static let removeFromFavorite = "heart.slash.fill"
 }

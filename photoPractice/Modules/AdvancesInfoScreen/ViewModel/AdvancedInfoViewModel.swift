@@ -35,7 +35,12 @@ extension AdvancedInfoViewModel: AdvancedInfoProtocol {
     var countDownload: String {
         return "\(photo.downloads ?? 0)"
     }
-    
+    func savePhoto() {
+        UserDefaultsWorker.shared.savePhoto(photo: photo)
+    }
+    func removePhoto() {
+        UserDefaultsWorker.shared.removePhoto(photo: photo)
+    }
     
     
 }

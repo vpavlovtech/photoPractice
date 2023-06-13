@@ -14,6 +14,9 @@ final class FavoriteTableViewCell: UITableViewCell {
     
     private let miniPhoto: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -34,12 +37,12 @@ final class FavoriteTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
     // - MARK: Private method setupCell
     private func setupCell() {
         [miniPhoto, authorLabel].forEach {
@@ -58,8 +61,10 @@ final class FavoriteTableViewCell: UITableViewCell {
         ])
     }
     // - MARK: Public method configureCell
-    func configureCell() {
-        miniPhoto.image = UIImage(named: "DC")
-        authorLabel.text = "test developer"
+    func configureCell(viewModel: FavoriteCellViewModel) {
+        miniPhoto.kf.setImage(with: viewModel.photoURL,
+                                  options: [.cacheOriginalImage,
+                                            .transition(.fade(0.25))])
+        authorLabel.text = viewModel.userName
     }
 }

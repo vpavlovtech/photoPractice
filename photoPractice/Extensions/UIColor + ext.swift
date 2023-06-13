@@ -17,4 +17,7 @@ extension UIColor {
     static var unselectedItem: UIColor {
         return .black
     }
+    static var backgroundButtons: UIColor {
+        return #colorLiteral(red: 0.8438386321, green: 0.9973402619, blue: 1, alpha: 1)
+    }
 }

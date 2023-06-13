@@ -36,6 +36,9 @@
 		CEA6380E2A3764B500FABE02 /* FavoriteScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6380D2A3764B500FABE02 /* FavoriteScreenViewModelProtocol.swift */; };
 		CEA638122A377EF700FABE02 /* String + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA638112A377EF700FABE02 /* String + ext.swift */; };
 		CEA638142A37840F00FABE02 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA638132A37840F00FABE02 /* SearchModel.swift */; };
+		CEA638162A3855D600FABE02 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA638152A3855D600FABE02 /* FavoriteCellViewModel.swift */; };
+		CEA638182A3855E100FABE02 /* FavoriteCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA638172A3855E100FABE02 /* FavoriteCellViewModelProtocol.swift */; };
+		CEA6381A2A385CA000FABE02 /* UserDefaultsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA638192A385CA000FABE02 /* UserDefaultsWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		CEA6380D2A3764B500FABE02 /* FavoriteScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		CEA638112A377EF700FABE02 /* String + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ext.swift"; sourceTree = "<group>"; };
 		CEA638132A37840F00FABE02 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		CEA638152A3855D600FABE02 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
+		CEA638172A3855E100FABE02 /* FavoriteCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModelProtocol.swift; sourceTree = "<group>"; };
+		CEA638192A385CA000FABE02 /* UserDefaultsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 			children = (
 				CEA637DF2A372D8F00FABE02 /* ImagesNames.swift */,
 				CEA637FD2A37635B00FABE02 /* Dynamic.swift */,
+				CEA638192A385CA000FABE02 /* UserDefaultsWorker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -280,6 +287,8 @@
 			children = (
 				CEA6380B2A3764A300FABE02 /* FavoriteScreenViewModel.swift */,
 				CEA6380D2A3764B500FABE02 /* FavoriteScreenViewModelProtocol.swift */,
+				CEA638152A3855D600FABE02 /* FavoriteCellViewModel.swift */,
+				CEA638172A3855E100FABE02 /* FavoriteCellViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -415,10 +424,12 @@
 				CEA638002A3763D300FABE02 /* PhotoCellViewModel.swift in Sources */,
 				CEA6380E2A3764B500FABE02 /* FavoriteScreenViewModelProtocol.swift in Sources */,
 				CEA638122A377EF700FABE02 /* String + ext.swift in Sources */,
+				CEA638182A3855E100FABE02 /* FavoriteCellViewModelProtocol.swift in Sources */,
 				CEA637FA2A37623700FABE02 /* HomeViewModel.swift in Sources */,
 				CEA637F52A37551000FABE02 /* PhotoModel.swift in Sources */,
 				CEA638062A37646600FABE02 /* AdvancedInfoViewModel.swift in Sources */,
 				CEA637DD2A372D1800FABE02 /* enum TabBarConfigure.swift in Sources */,
+				CEA638162A3855D600FABE02 /* FavoriteCellViewModel.swift in Sources */,
 				CEA637DA2A372C6B00FABE02 /* MainTabBarController.swift in Sources */,
 				CEA638142A37840F00FABE02 /* SearchModel.swift in Sources */,
 				CEA637FC2A37633200FABE02 /* HomeViewModelProtocol.swift in Sources */,
@@ -427,6 +438,7 @@
 				CEA637C32A3609F100FABE02 /* SceneDelegate.swift in Sources */,
 				CEA637F12A374AAE00FABE02 /* ApiManagerProtocol.swift in Sources */,
 				CEA638022A3763E800FABE02 /* PhotoCellViewModelProtocol.swift in Sources */,
+				CEA6381A2A385CA000FABE02 /* UserDefaultsWorker.swift in Sources */,
 				CEA6380C2A3764A300FABE02 /* FavoriteScreenViewModel.swift in Sources */,
 				CEA637E02A372D8F00FABE02 /* ImagesNames.swift in Sources */,
 				CEA637F32A374ABE00FABE02 /* ApiManager.swift in Sources */,

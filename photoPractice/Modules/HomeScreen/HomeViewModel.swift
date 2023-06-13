@@ -47,9 +47,9 @@ extension HomeViewModel: HomeViewModelProtocol {
     func searchPhotos(search: String?) {
         cachPhotos = photos
         guard let text = search else { return }
-        ApiManager.shared.getSearchPhoto(search: text) { photos in
+        ApiManager.shared.getSearchPhoto(search: text) { [weak self] photos in
             DispatchQueue.main.async {
-                self.photos = photos
+                self?.photos = photos
             }
         }
     }
